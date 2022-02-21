@@ -1,5 +1,72 @@
-¼õ•PK+¾õ—PI+¶õŸPA+¶ôŸQA*¶ôŸQA*´ôQ	C*¼´•CKj¼´•CKj—,Q42¸~–P3˜^†@#˜^À£˜’^À£˜’^,Ä4§¸–~,Ô4·¸†~R,”4÷¸Æ~®ªŸl‡>ªŠ›Lƒ/¢Ê“‹o^âÊÓËoG^âÎÓËkGZãÎÒÊkFZÃÎòêkfZƒÎ²ªk&Z,Àò»êØ-Ğó«ëÈ=Ğã«ûÈ}Ğ£«L»È}Ò£©L»Êò¡‰N4¹êoò±‰^4©ê/òñ‰4éêh_h_h_h_llll||||<<<<<}<}<}<}8m8m8m8m0m0m0m0mpmpmpmpmëiëiëiëiïyïyïyïyçùçùçùçùçùçùçùçùçûçûçûçûãëãëãëãëÃëÃëÃëÃëCëCëCëCëÏ1´Ş	)×RÍ¶ş	ÕrÅQ¾¾Iİ2EQ>¾ƒI]2EE>ºƒM]6AU:º‡MY6I2úQv	rúÏv`-`-`-`-`-`-`-`-h-h-h-h-h-h-h-h-h-h-h-h-j-j-j-j-b­b­b­b­b­b­b­b­Jªc÷]½tHªaõ]¿t@*iıİ·ôÀ*é}İ7ôÀ"é‡}Õ7üÂ"ë‡Õ5üÂbëÇ•5¼ÂbëÇ•5¼bÖkzµZfÖ‰k~µZvÖ™knµZvÖ™knµZvÒ™on±^rÒoj±^z’•/bñz“•.bğå}q/;’å}q/;’ÅıQ¯†¾ÅıQ¯†¾ÅıQ¯†¾ÇıS¯†¼×ıC¯	†¬×üC®	‡¬À+À+À+À+Â;Â;Â;Â;Â;Â;Â;Â;B;B;B;B;B9B9B9B9F9F9F9F9FyFyFyFyFyFyFyFyºQd*‹—|I¸Qf*‰—~I˜QF*©—^IØQ*é—IØY"éŸAÙY"èŸAÑY"àŸAÑY"àŸAHr§ÏP+şIr¦ÏQ*şIr¦ÏQ*ş	ræÏjş	ræÏjş	Ræï1jŞ)ÒÆo1±J^)ÒÆo1±J^$•vß_zË4•fßOzÛt•&ßz›u•'ßzšq•#ß
-zq—#İ
-xq—#İ
-xCq×#
-8®YQ"¾ŸI®¯Yq"Ÿi¯yq¿iÎ¯9qBÿiÎ«9uBšÿmÎ‹9UBºÿMî‹UbºßMî
+#include <bits/stdc++.h>
+
+#define fi first
+#define se second
+#define mp make_pair
+#define pb push_back
+#define eb emplace_back
+#define allv(V) (V).begin(), (V).end()
+
+using namespace std;
+
+typedef long long ll;
+typedef pair<int, int> pii;
+typedef pair<ll, ll> pll;
+
+const int inf = INT_MAX;
+const ll infll = LONG_LONG_MAX;
+const ll mod = 1000000007LL;
+const int MAXN = 1010;
+
+int gcd(int x, int y){return y ? gcd(y, x % y) : x;}
+
+string s;
+
+int z[101010];
+
+void Z()
+{
+	int l = 0, r = 0;
+	for(int i = 1; i < s.size(); i++)
+	{
+		if(r < i)
+		{
+			for(int j = i; j < s.size(); j++)
+			{
+				if(s[j - i] == s[j])
+				{
+					z[i] = j - i + 1;
+					l = i;
+					r = j;
+				}
+				else break;
+			}
+		}
+		else if(z[i - l] <= r - i) z[i] = z[i - l];
+		else
+		{
+			z[i] = r - i + 1;
+			l = i;
+			for(int j = r + 1; j < s.size(); j++)
+			{
+				if(s[j - l] == s[j])
+				{
+					z[i] = j - i + 1;
+					r = j;
+				}
+				else break;
+			}
+		}
+	}
+
+	z[0] = s.size();
+}
+
+int main()
+{
+	ios::sync_with_stdio(0);
+	cin.tie(0);
+    
+    getline(cin, s);
+	return 0;
+}

@@ -32,7 +32,7 @@ void gsz(int x)
     sz[x] = 1;
     for(auto &i : v[x])
     {
-        gsz(i, x);
+        gsz(i);
         sz[x] += sz[i];
         if(sz[i] > sz[v[x][0]]) swap(i, v[x][0]);
     }
@@ -50,5 +50,6 @@ void hld(int x)
 
 int main()
 {
+    nxt[1] = 1; // mandatory before call hld function
     return 0;
 }

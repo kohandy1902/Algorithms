@@ -77,7 +77,7 @@ int dfs(int x, int c)
 	return 0;
 }
 
-int maxflox()
+int maxflow()
 {
 	int ans = 0;
 	while(bfs())
